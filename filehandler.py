@@ -48,6 +48,10 @@ class SettingsFilehandler:
         :param filename: Name of the configuration file
         :raises OSError: if the file can't be opened
         """
+        if filename is None:
+            msg = f"Missing configuration filename"
+            raise NameError(msg)
+
         result = self._parser.read(filename)
         if not result:
             msg = f"Could not open {filename}"
